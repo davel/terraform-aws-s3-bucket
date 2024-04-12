@@ -315,3 +315,9 @@ variable "putin_khuylo" {
   type        = bool
   default     = true
 }
+
+variable "ignore_rename" {
+  description = "Do not destroy and recreate an existing bucket should the configured name change."
+  type        = bool
+  default     = false
+}

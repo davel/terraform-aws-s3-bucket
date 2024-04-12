@@ -31,6 +31,13 @@ resource "aws_s3_bucket" "this" {
   force_destroy       = var.force_destroy
   object_lock_enabled = var.object_lock_enabled
   tags                = var.tags
+
+  dynamic "lifecycle" {
+    count = var.ignore_name ? 1 : 0
+    ignore_changes = [
+      bucket, bucket_prefix
+    ]
+  }
 }
 
 resource "aws_s3_bucket_logging" "this" {
